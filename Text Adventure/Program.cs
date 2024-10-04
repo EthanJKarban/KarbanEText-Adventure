@@ -9,16 +9,18 @@
 
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            Console.WriteLine("Hello insert character name here");
+            Console.ReadLine();
+
             Console.WriteLine("");
             Console.WriteLine("");
 
 
-            
+
             string input = Console.ReadLine();
             if (input == "")
             {
-                Console
+            
             }
             else if (input == "")
             {
