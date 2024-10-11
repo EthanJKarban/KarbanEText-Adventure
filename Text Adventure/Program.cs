@@ -12,14 +12,19 @@ namespace Text_Adventure
     {
 
         public static Character currentPlayer = new Character();
-        
+        public static bool mainLoop = true;
 
 
         static void Main(string[] args)
         {
 
+
             Start();
             Encounter.FirstEncounter();
+            while (mainLoop)
+            {
+                Encounter.BasicFightEncounter();
+            }
             //    string input = Console.ReadLine();
             //    Console.WriteLine("You, You have been left alone in the middle of the woods by your 100% loving parents.");    // Warning: Unimportant dialogue
             //    Console.WriteLine("You.... forgot your name? What was your name?");             // Name for no reason
@@ -257,9 +262,15 @@ namespace Text_Adventure
             Console.WriteLine("Not that it matters.");
             Console.ReadLine(); // Enter anything to continue
             Console.Clear();
+            NewLife();
+        }
+        static void NewLife()
+        {
+            string input = Console.ReadLine();
 
             Console.WriteLine("Your very incapable in every sense of the word.");
             Console.WriteLine("Are you going to make your way back home with your loving parents or you gonna go elsewhere?"); // Home | elsewhere
+
 
 
             input = Console.ReadLine().ToLower();
@@ -282,11 +293,21 @@ namespace Text_Adventure
                     {
                         Console.WriteLine("The last thing you see is your old man come out with a gun and your loving mother stare at you with tears in her eyes as a loud boom echoes through the town.");
                         Console.ReadLine();
-                        Console.WriteLine("You were killed by your Loving Parent and your confused why");
+                        Console.WriteLine("You were killed by your Loving Parent and you're confused why");
                         Console.WriteLine("Maybe you should have just went the other way...");
                         Console.Clear();
                         Console.ReadLine();                 // They threw you out for a reason -._-.
+                        Start();
                     }
+                    
+                    else
+                    {
+                        NewLife();
+                    }
+                }
+                else
+                {
+                    NewLife();
                 }
 
 
@@ -335,6 +356,10 @@ namespace Text_Adventure
                             Console.WriteLine("You died");
                             Console.ReadLine();
                         }
+                        else
+                        {
+                            NewLife();
+                        }
                     }
                     if (input == "no")
                     {
@@ -342,6 +367,10 @@ namespace Text_Adventure
 
                         Road();
 
+                    }
+                    else
+                    {
+                        Road();
                     }
                 }
                 else if (input == "right")
@@ -353,71 +382,82 @@ namespace Text_Adventure
 
                     Road();
                 }
+                else
+                {
+                    Road();
+                }
 
 
 
             }
+        }
 
-            static void Road()                      // Run or walk
+
+
+        static void Road()                      // Run or walk
+        {
+            String input = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("You make your way down the road");
+            Console.ReadLine();
+            Console.WriteLine("You feel like this is very repetitive");
+            Console.WriteLine("What do you think?");
+            input = Console.ReadLine().ToLower();
+            if (input == "yes")
             {
-                String input = Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine("You make your way down the road");
+                Console.WriteLine("You sprint down the path tired of this");
                 Console.ReadLine();
-                Console.WriteLine("You feel like this is very repetitive");
-                Console.WriteLine("What do you think?");
-                input = Console.ReadLine().ToLower();
-                if (input == "yes")
-                {
-                    Console.Clear();
-                    Console.WriteLine("You sprint down the path tired of this");
-                    Console.ReadLine();
-                    Console.WriteLine("You run into a gate angry and tired");
-                    Console.WriteLine("You look at the gate trying to calm down before making a decision");
-                    Gate();
-                }
-                if (input == "no")
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("You walk down the path");
-                    Console.ReadLine();
-                    Console.WriteLine("Your making it down a path that seems infinite");
-                    Console.ReadLine();
-                    Console.WriteLine("You have arrived at the path.... oh wait.");
-                    Console.WriteLine("You were already here");
-                    Console.ReadLine();
-                    Console.WriteLine("You walk for awhile then you bump your head");
-                    Console.ReadLine();
-                    Console.WriteLine("You get up tired and hungry");
-                    Console.ReadLine();
-                    Console.WriteLine("You get up and realize it's a gate");
-
-                    Gate();
-                }
-
-
+                Console.WriteLine("You run into a gate angry and tired");
+                Console.WriteLine("You look at the gate trying to calm down before making a decision");
+                Gate();
             }
-
-
-
-            static void Gate()
+            else if (input == "no")
             {
-                string input = Console.ReadLine();    // Gate choice
 
                 Console.Clear();
-                Console.WriteLine("Should you walk into this town?");
-                input = Console.ReadLine().ToLower();
-                if (input == "yes")
-                {
-                    Console.WriteLine("You try to open the gate but it is a bit too big.");
-                    Console.WriteLine("Then you try to nock on the gate");
-                    Console.ReadLine();
-                    Console.WriteLine("A guard pokes his head out of the gate then opens the gate");
-                    Console.WriteLine("Looking confused at the lack of security you enter the town");
-                    Inside();
-                }
+                Console.WriteLine("You walk down the path");
+                Console.ReadLine();
+                Console.WriteLine("Your making it down a path that seems infinite");
+                Console.ReadLine();
+                Console.WriteLine("You have arrived at the path.... oh wait.");
+                Console.WriteLine("You were already here");
+                Console.ReadLine();
+                Console.WriteLine("You walk for awhile then you bump your head");
+                Console.ReadLine();
+                Console.WriteLine("You get up tired and hungry");
+                Console.ReadLine();
+                Console.WriteLine("You get up and realize it's a gate");
+
+                Gate();
             }
+            else
+            {
+                Road();
+            }
+
+
+        }
+
+
+
+        static void Gate()
+        {
+            string input = Console.ReadLine();    // Gate choice
+
+            Console.Clear();
+            Console.WriteLine("Should you walk into this town?");
+            input = Console.ReadLine().ToLower();
+            if (input == "yes")
+            {
+                Console.WriteLine("You try to open the gate but it is a bit too big.");
+                Console.WriteLine("Then you try to nock on the gate");
+                Console.ReadLine();
+                Console.WriteLine("A guard pokes his head out of the gate then opens the gate");
+                Console.WriteLine("Looking confused at the lack of security you enter the town");
+                Inside();
+            }
+            
             if (input == "no")
             {
                 Console.WriteLine("You try to go around but you realize it is a suprisingly big city");
@@ -429,9 +469,11 @@ namespace Text_Adventure
                 Console.WriteLine("You enter the town not even questioning the lack of security");
                 Inside();
             }
-
+            else
+            {
+                Inside();
+            }
         }
-
 
         static void Inside()        // Inside the town
         {
@@ -450,14 +492,16 @@ namespace Text_Adventure
 
 
         }
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
 }
         
 
