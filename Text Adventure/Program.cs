@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.ComponentModel.Design;
 using System.Data;
 using System.Net.NetworkInformation;
@@ -268,6 +269,7 @@ namespace Text_Adventure
         {
             string input = Console.ReadLine();
 
+            Console.Clear();
             Console.WriteLine("Your very incapable in every sense of the word.");
             Console.WriteLine("Are you going to make your way back home with your loving parents or you gonna go elsewhere?"); // Home | elsewhere
 
@@ -312,6 +314,12 @@ namespace Text_Adventure
 
 
             }
+            else if (input == "")
+            {
+                NewLife();
+            }
+            
+
 
 
             else if (input == "elsewhere")  //Left or Right
@@ -487,15 +495,32 @@ namespace Text_Adventure
             Console.ReadLine();
             Console.WriteLine("It looked like a huge HUGE tavern but from the range of people inside you don't think it's a tavern");
             Console.ReadLine();
+            Console.Clear();
             Console.WriteLine("You are in the adventurers guild.");
             Console.ReadLine();
+            Console.WriteLine("You walk up to the desk for directions but up signing up for the benefits");
+            Console.ReadLine();
+            Console.WriteLine("as a test you were sent with a cheap sword to fight the things inside the nearby graveyard");
+            Console.Clear();
 
 
+
+            Grave();
+
+
+
+            static void Grave()
+            {
+                Random rand = new Random();
+                string input = Console.ReadLine();
+
+                int t = (rand.Next(1, 6));
+                Console.WriteLine("After a long walk you make it to the graveyard, there is " ,t, "tombs that have been robbed");
+            }
         }
     }
 
-
-
+    
 
 
 
