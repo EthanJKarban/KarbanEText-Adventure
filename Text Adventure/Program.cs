@@ -11,14 +11,16 @@ namespace Text_Adventure
 {
     internal class Program
     {
-
+        
         public static Character currentPlayer = new Character();
         public static bool mainLoop = true;
 
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Console.Title = "VERY Unfinished Text Adventure ._.";
 
+            Encounter.GetName();
 
             Start();
             Encounter.FirstEncounter();
@@ -248,15 +250,15 @@ namespace Text_Adventure
             string input = Console.ReadLine();
             Console.WriteLine("You, You have been left alone in the middle of the woods by your 100% loving parents.");    // Warning: Unimportant dialogue
             Console.WriteLine("You.... forgot your name? What was your name?");             // Name for no reason
-            string currentPlayer = Console.ReadLine();
+            string name = Console.ReadLine();
 
-            if (currentPlayer == "")
+            if (name == "")
             {
                 Console.WriteLine("You Forgot your name");
             }
             else
             {
-                Console.WriteLine("You remember your name is, " + currentPlayer, ".");
+                Console.WriteLine("You remember your name is, " + name, ".");
             }
 
             // Console.WriteLine("You remember your name is, " + playerName ,".");
@@ -511,11 +513,11 @@ namespace Text_Adventure
 
             static void Grave()
             {
-                Random rand = new Random();
+                
                 string input = Console.ReadLine();
 
-                int t = (rand.Next(1, 6));
-                Console.WriteLine("After a long walk you make it to the graveyard, there is " ,t, "tombs that have been robbed");
+                Console.WriteLine("After a long walk you make it to the graveyard, there is a few tombs that have been robbed.");
+                Console.WriteLine("There is something approaching.");
             }
         }
     }
